@@ -1,0 +1,94 @@
+{
+  "SaveName": "",
+  "Date": "",
+  "VersionNumber": "",
+  "GameMode": "",
+  "GameType": "",
+  "GameComplexity": "",
+  "Tags": [],
+  "Gravity": 0.5,
+  "PlayArea": 0.5,
+  "Table": "",
+  "Sky": "",
+  "Note": "",
+  "TabStates": {},
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "XmlUI": "",
+  "ObjectStates": [
+    {
+      "GUID": "ac5f5c",
+      "Name": "Custom_Token",
+      "Transform": {
+        "posX": 43.5059776,
+        "posY": 1.531499,
+        "posZ": -30.1314068,
+        "rotX": -9.267972E-08,
+        "rotY": 270.0,
+        "rotZ": -4.68043E-08,
+        "scaleX": 0.678333,
+        "scaleY": 1.0,
+        "scaleZ": 0.678333
+      },
+      "Nickname": "Monster Counter",
+      "Description": "",
+      "GMNotes": "",
+      "AltLookAngle": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "ColorDiffuse": {
+        "r": 1.0,
+        "g": 1.0,
+        "b": 1.0
+      },
+      "Tags": [
+        "Asset"
+      ],
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": false,
+      "Hands": false,
+      "CustomImage": {
+        "ImageURL": "https://cdn.discordapp.com/attachments/1189726729758052442/1190083303894696037/ZZZZ.jpg?ex=65a08272&is=658e0d72&hm=bacb4ad6df887356aca34e8bffee8d0bb2ba3170491f56d2e94294e84e1555a2&",
+        "ImageSecondaryURL": "",
+        "ImageScalar": 1.0,
+        "WidthScale": 0.0,
+        "CustomToken": {
+          "Thickness": 0.1,
+          "MergeDistancePixels": 15.0,
+          "StandUp": false,
+          "Stackable": false
+        }
+      },
+      "LuaScript": "MIN_VALUE = -99\nMAX_VALUE = 999\n\nfunction onload(saved_data)\n    light_mode = false\n\n    val1 = 0\n    val2 = 0\n    val3 = 0\n    val4 = 0\n    val5 = 0\n    val6 = 0\n    zz = 0\n    if saved_data ~= \"\" then\n        local loaded_data = JSON.decode(saved_data)\n\n        val1 = loaded_data[2]\n        val2 = loaded_data[2]\n        val3 = loaded_data[2]\n        val4 = loaded_data[2]\n        val5 = loaded_data[2]\n        val6 = loaded_data[2]\n    end\n\n    createAll()\nend\n\nfunction onCollisionEnter(collision_info, collision_object)\n    obj = collision_info.collision_object\n    if zz==0 then\n        if collision_info.collision_object.hasTag(\"ScenarioCard\") then\n            self.addAttachment(obj)\n            zz=2\n        end\n    end\nend\n\nfunction updateSave1()\n    local data_to_save = {val1}\n    saved_data = JSON.encode(data_to_save)\n    self.script_state = saved_data\nend\n\nfunction updateSave2()\n    local data_to_save = {val2}\n    saved_data = JSON.encode(data_to_save)\n    self.script_state = saved_data\nend\n\nfunction updateSave3()\n    local data_to_save = {val3}\n    saved_data = JSON.encode(data_to_save)\n    self.script_state = saved_data\nend\n\nfunction updateSave4()\n    local data_to_save = {val4}\n    saved_data = JSON.encode(data_to_save)\n    self.script_state = saved_data\nend\n\nfunction updateSave5()\n    local data_to_save = {val5}\n    saved_data = JSON.encode(data_to_save)\n    self.script_state = saved_data\nend\n\nfunction updateSave6()\n    local data_to_save = {val6}\n    saved_data = JSON.encode(data_to_save)\n    self.script_state = saved_data\nend\n\nfunction createAll()\n   \n        self.createButton({\n        label=tostring(val1),\n        click_function=\"add_subtract1\",\n        tooltip=ttText1,\n\n        function_owner=self,\n        position={0,0.1,-1.50},\n        height=90,\n        width=90,\n    \n        alignment = 1,\n        scale={x=1.5, y=1.5, z=1.5},\n        font_size=85,\n        font_color= {0.9,0.9,0.9,100} ,\n        color= {0,0.09,0.16,90}\n    \n        })\n\n        self.createButton({\n        label=tostring(val2),\n        click_function=\"add_subtract2\",\n        tooltip=ttText2,\n        function_owner=self,\n        position={0.85,0.1,-1.65},\n        height=90,\n        width=90,\n        alignment = 2,\n    \n        scale={x=1.5, y=1.5, z=1.5},\n        font_size=85,\n        font_color= {0.9,0.9,0.9,100},\n        color= {0.39,0.42,0.36,80}\n        })\n\n\n        self.createButton({\n        label=tostring(val3),\n        click_function=\"add_subtract3\",\n        tooltip=ttText3,\n        function_owner=self,\n        position={-0.85,0.1,-1.65},\n        height=90,\n        width=90,\n        alignment = 3,\n        scale={x=1.5, y=1.5, z=1.5},\n        font_size=85,\n        font_color= {0.9,0.9,0.9,100},\n        color= {0.43,0.27,0.21,80}\n        })\n\n        self.createButton({\n        label=tostring(val4),\n        click_function=\"add_subtract4\",\n        tooltip=ttText3,\n        function_owner=self,\n        position={2,0,-2},\n        height=200,\n        width=200,\n        alignment = 4,\n        scale={x=1.5, y=1.5, z=1.5},\n        font_size=160,\n        font_color={0.9,0.9,0.9,100},\n        color= {0.39,0.21,0.12,90}\n        })\n\n        self.createButton({\n        label=tostring(val5),\n        click_function=\"add_subtract5\",\n        tooltip=ttText3,\n        function_owner=self,\n        position={-0.46,0.10,0.49},\n        height=90,\n        width=90,\n        alignment = 5,\n        scale={x=1.5, y=1.5, z=1.5},\n        font_size=85,\n        font_color= {0.9,0.9,0.9,100},\n        color= {0.6,0.05,0.15,80}\n        })\n\n        self.createButton({\n        label=tostring(val6),\n        click_function=\"add_subtract6\",\n        tooltip=ttText3,\n        function_owner=self,\n        position={0.46,0.10,0.49},\n        height=90,\n        width=90,\n        alignment = 6,\n        scale={x=1.5, y=1.5, z=1.5},\n        font_size=85,\n        font_color= {0.9,0.9,0.9,100},\n        color= {0.22,0.24,0.6,80}\n        })\n\n\n        self.createButton({\n        label=\"[ Dettach ]\",\n\n        click_function=\"Separate\",\n        function_owner=self,\n        position={0,0.05,2.6},\n\n        height=250,\n        width=1200,\n        scale={x=1, y=1, z=1},\n        font_size=250,\n        font_color= {0.9,0.9,0.9,100},\n        color={0,0,0,0}\n        })\n       \n        self.createButton({\n        label=\"[ Reset ]\",\n        click_function=\"reset_val\",\n        function_owner=self,\n        position={0,0.05,-2.6},\n\n        height=250,\n        width=1200,\n        scale={x=1, y=1, z=1},\n        font_size=250,\n        font_color= {0.9,0.9,0.9,100},\n        color={0,0,0,0}\n        })\nend\n\nfunction removeAll()\n    self.removeInput(0)\n    self.removeInput(1)\n    self.removeButton(0)\n    self.removeButton(1)\n    self.removeButton(2)\n    self.removeButton(3)\nend\n\nfunction reloadAll()\n    removeAll()\n    createAll()\n\n    updateSave1()\n    updateSave2()\n    updateSave3()\n    updateSave4()\n    updateSave5()\n    updateSave6()\nend\n\n\nfunction Separate(collision_info, collision_object)\n    self.removeAttachments()\n    zz = 1\nend\n\nfunction add_subtract1(_obj, _color, alt_click)\n    mod = alt_click and -1 or 1\n    new_value1 = math.min(math.max(val1 + mod, MIN_VALUE), MAX_VALUE)\n    if val1 ~= new_value1 then\n        val1 = new_value1\n        updateVal1()\n        updateSave1()\n    end\nend\n\nfunction add_subtract2(_obj, _color, alt_click)\n    mod = alt_click and -1 or 1\n    new_value2 = math.min(math.max(val2 + mod, MIN_VALUE), MAX_VALUE)\n    if val2 ~= new_value2 then\n        val2 = new_value2\n        updateVal2()\n        updateSave2()\n    end\nend\n\nfunction add_subtract3(_obj, _color, alt_click)\n    mod = alt_click and -1 or 1\n    new_value3 = math.min(math.max(val3 + mod, MIN_VALUE), MAX_VALUE)\n    if val3 ~= new_value3 then\n        val3 = new_value3\n        updateVal3()\n        updateSave3()\n    end\nend\n\nfunction add_subtract4(_obj, _color, alt_click)\n    mod = alt_click and -1 or 1\n    new_value4 = math.min(math.max(val4 + mod, MIN_VALUE), MAX_VALUE)\n    if val4 ~= new_value4 then\n        val4 = new_value4\n        updateVal4()\n        updateSave4()\n    end\nend\n\nfunction add_subtract5(_obj, _color, alt_click)\n    mod = alt_click and -1 or 1\n    new_value5 = math.min(math.max(val5 + mod, MIN_VALUE), MAX_VALUE)\n    if val5 ~= new_value5 then\n        val5 = new_value5\n        updateVal5()\n        updateSave5()\n    end\nend\n\nfunction add_subtract6(_obj, _color, alt_click)\n    mod = alt_click and -1 or 1\n    new_value6 = math.min(math.max(val6 + mod, MIN_VALUE), MAX_VALUE)\n    if val6 ~= new_value6 then\n        val6 = new_value6\n        updateVal6()\n        updateSave6()\n    end\nend\n\n\nfunction updateVal1()\n    self.editButton({\n        index = 0,\n        label = tostring(val1)\n\n    })\nend\n\nfunction updateVal2()\n    self.editButton({\n        index = 1,\n        label = tostring(val2)\n\n    })\nend\n\nfunction updateVal3()\n    self.editButton({\n        index = 2,\n        label = tostring(val3)\n    })\nend\n\nfunction updateVal4()\n\n        self.editButton({\n        index = 3,\n        label = tostring(val4)\n        })\nend\n\nfunction updateVal5()\n\n        self.editButton({\n        index = 4,\n        label = tostring(val5)\n        })\nend\n\nfunction updateVal6()\n\n        self.editButton({\n        index = 5,\n        label = tostring(val6)\n        })\nend\n\nfunction reset_val()\n    val1 = 0\n    val2 = 0\n    val3 = 0\n    val4 = 0\n    val5 = 0\n    val6 = 0\n    zz = 0\n    updateVal1()\n    updateVal2()\n    updateVal3()\n    updateVal4()\n    updateVal5()\n    updateVal6()    \n    updateSave1()\n    updateSave2()\n    updateSave3()\n    updateSave4()\n    \n    updateSave5()\n    updateSave6()\nend\n\n\nfunction null()\nend\n\nfunction keepSample(_obj, _string, value) \n    reloadAll()\nend",
+      "LuaScriptState": "[0]",
+      "XmlUI": "",
+      "AttachedSnapPoints": [
+        {
+          "Position": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          }
+        }
+      ]
+    }
+  ]
+}
